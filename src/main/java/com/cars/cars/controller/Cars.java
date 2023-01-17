@@ -1,22 +1,32 @@
 package com.cars.cars.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cars.cars.dto.CarsDto;
+import com.cars.cars.model.Car;
+import com.cars.cars.repository.CarRepository;
 
 @RestController
 @RequestMapping("/api/cars")
 public class Cars {
 
+    @Autowired
+    private CarRepository repository;
+
+    @GetMapping
+    public List<Car> listAll() {
+        return repository.findAll();
+    }
+
     @PostMapping
     public void addCars(@RequestBody CarsDto req) {
-        System.out.println(req.modelo());
-        System.out.println(req.fabricante());
-        System.out.println(req.dataFabricacao());
-        System.out.println(req.valor());
-        System.out.println(req.anoModelo());
+        repository.save(new Car(req));
     }
 }
