@@ -1,6 +1,6 @@
 # cars
 
-Exercise to start a rest api with java and "add" a car with the post route.
+Exercise for starting a rest API with java and implementing data persistence.
 
 ## Routes
 
@@ -15,4 +15,11 @@ POST /api/cars
 	            valor: 10.000,
 	            anoModelo: 2023,
             }
+```
+
+```yml
+GET /api/cars
+    - Route to return a list car.
+    - headers: {}
+    - body: {}
 ```
