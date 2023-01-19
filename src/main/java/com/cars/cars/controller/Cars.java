@@ -33,4 +33,9 @@ public class Cars {
     public void addCars(@RequestBody @Valid CarsDto req) {
         repository.save(new Car(req));
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteCar(@PathVariable Long id) {
+        repository.deleteById(id);
+    }
 }
